@@ -1,7 +1,8 @@
 <template>
   <div>
     <div class="out-wrap">
-      <con-header></con-header>
+      main
+      <!-- <con-header></con-header> -->
       <div>
       </div>
     </div>

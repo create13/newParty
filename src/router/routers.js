@@ -1,11 +1,16 @@
 let childs = [
   {
+    path: '/main',
+    name: 'main',
+    component: () => import('@/views/main')
+  },
+  {
     path: '/seconds',
-    components: () => import('@/views/seconds')
+    component: () => import('@/views/seconds')
   },
   {
     path: '/myDesk',
-    components: () => import('@/views/myDesk')
+    component: () => import('@/views/myDesk')
   }
 ];
 export default childs;
