@@ -80,7 +80,7 @@ export default {
     },
     changesname (name) {
       console.log(name);
-      this.$router.push({path: `/${name}`});
+      this.$router.push({path: `/main/${name}`});
     }
   }
 };

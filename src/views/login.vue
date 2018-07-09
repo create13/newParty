@@ -1,12 +1,12 @@
 <template>
   <div>
-    aaaaaaa
+    我是login页面
   </div>
 </template>
 
 <script>
 export default {
-  name: 'myDesk',
+  name: '',
   data () {
     return {
     };
