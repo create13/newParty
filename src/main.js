@@ -5,8 +5,9 @@ import App from './App';
 import router from './router';
 import iView from 'iview';
 import 'iview/dist/styles/iview.css';
+import Service from './service';
 Vue.use(iView);
-
+Vue.use(Service);
 Vue.config.productionTip = false;
 /* eslint-disable no-new */
 new Vue({
