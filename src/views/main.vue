@@ -12,17 +12,35 @@
             <h1>1,{{datum.numbers}}</h1>
           </div>
         </div>
-        <!-- <div class="square-line"></div>
-        <div class="square-line"></div>
-        <div class="square-line"></div>
-        <div class="square-line"></div> -->
       </div>
       <div class="outer-middle">
         <div class="charts all-style">
           <div id="lineCharts"></div>
+          <div class="selects">
+            <Select v-model="valueDay" size="small" style="width:100px">
+              <Option v-for="item in dayList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+            </Select>
+          </div>
         </div>
         <div class="tables all-style">
+
+          <Table height="300" stripe :columns="columns" :data="tableData"></Table>
         </div>
+      </div>
+      <div class="outer-footer">
+        <div class="footer-label">
+          <ul class="list-dots">
+            <li><span>仓库预警</span><span></span></li>
+            <li><span>仓库上线报警</span><span class="right-location">5</span></li>
+            <li><span>仓库下线报警</span><span class="right-location">10</span></li>
+            <li><span>进效期商品报警</span><span class="right-location">0</span></li>
+            <li><span>失效期商品报警</span><span class="right-location">0</span></li>
+          </ul>
+        </div>
+        <div class="footer-label"></div>
+        <div class="footer-label"></div>
+        <div class="footer-label"></div>
+
       </div>
     </div>
   </div>
@@ -41,6 +59,30 @@ export default {
         {description: '现金', prize: 33452, condition: '现金银行', numbers: '9,8711', srcPic: '', backgrounds: '#E69A67'},
         {description: '应收', prize: 4545, condition: '应收应付', numbers: '9,8711', srcPic: '', backgrounds: '#2BCC71'}
 
+      ],
+      valueDay: '最近7天',
+      dayList: [
+        {label: '最近7天', value: '最近7天'},
+        {label: '最近14天', value: '最近14天'}
+      ],
+      columns: [
+        {title: '行号', key: 'id'},
+        {title: '商品编号', key: 'code'},
+        {title: '商品全名', key: 'names'},
+        {title: '销售数量', key: 'amounts'},
+        {title: '销售金额', key: 'prizes'},
+        {title: '金额占比', key: 'keys'}
+      ],
+      tableData: [
+        {id: '01', code: 'sx1028', names: '物流产品', amounts: '200', prizes: '300', keys: '20%'},
+        {id: '01', code: 'sx1028', names: '物流产品', amounts: '200', prizes: '300', keys: '20%'},
+        {id: '01', code: 'sx1028', names: '物流产品', amounts: '200', prizes: '300', keys: '20%'},
+        {id: '01', code: 'sx1028', names: '物流产品', amounts: '200', prizes: '300', keys: '20%'},
+        {id: '01', code: 'sx1028', names: '物流产品', amounts: '200', prizes: '300', keys: '20%'},
+        {id: '01', code: 'sx1028', names: '物流产品', amounts: '200', prizes: '300', keys: '20%'},
+        {id: '01', code: 'sx1028', names: '物流产品', amounts: '200', prizes: '300', keys: '20%'},
+        {id: '01', code: 'sx1028', names: '物流产品', amounts: '200', prizes: '300', keys: '20%'},
+        {id: '01', code: 'sx1028', names: '物流产品', amounts: '200', prizes: '300', keys: '20%'}
       ]
     };
   },
@@ -68,7 +110,9 @@ export default {
           }
         },
         legend: {
-          data: ['销售毛利']
+          data: ['销售毛利'],
+          left: 80,
+          top: 8
         },
         grid: {
           left: '3%',
@@ -100,7 +144,7 @@ export default {
           interval: 50,
           nameTextStyle: {
             color: '#00ADA9',
-            padding: 20
+            padding: [20, 0]
           },
           splitLine: {
             show: true,
@@ -120,6 +164,7 @@ export default {
           {
             id: 'a',
             type: 'line',
+            name: '销售毛利',
             symbolSize: symbolSize,
             data: data,
             lineStyle: {
@@ -134,8 +179,6 @@ export default {
                 {name: '最大值', value: 240, xAxis: '05', yAxis: 240}
               ],
               symbolOffset: [0, '-30%']
-              // label: {
-              // }
             }
 
           }
@@ -145,7 +188,6 @@ export default {
     }
   }
 };
-
 </script>
 <style lang="less" scoped>
   .out-main {
@@ -155,6 +197,7 @@ export default {
       flex-flow: row nowrap;
       width: 100%;
       height: 110px;
+      min-width: 1300px;
       .square-line {
         height: 110px;
         margin-left: 1%;
@@ -173,7 +216,7 @@ export default {
           flex-flow: column;
           width: 70px;
           height: 70px;
-          margin: 20px 10% 20px 20%;
+          margin: 20px 8% 20px 16%;
           border-radius: 100%;
           color: #fff;
           p {
@@ -195,7 +238,6 @@ export default {
               margin-left: 20px;
               vertical-align: text-top;
             }
-
           }
           h1 {
             font-size: 24px;
@@ -223,10 +265,63 @@ export default {
         #lineCharts {
           flex: 1;
         }
+        .selects {
+          position: absolute;
+          left: 41.7%;
+          margin-top: 10px;
+        }
       }
       .tables {
         margin-left: 20px;
       }
     }
+    .outer-footer {
+      display: flex;
+      flex-flow: row nowrap;
+      width: 100%;
+      height: 200px;
+      min-width: 1300px;
+      background: #fff;
+      .footer-label {
+        margin-left: 1%;
+        flex: 1;
+        border-radius: 4px;
+        border: 1px solid yellow;
+        background-color: #7DC8F7;
+        color: #fff;
+        &:nth-child(1) {
+          margin-left: 0;
+        }
+        .list-dots {
+          list-style-type: none;
+          li {
+            font-size: 14px;
+            padding-left: 10%;
+            line-height: 36px;
+            display: flex;
+            flex-flow: row nowrap;
+            &:nth-child(1) {
+              padding-left: 24px;
+              padding-top: 10px;
+            }
+            span {
+              flex:1;
+              &:nth-last-child(1) {
+                margin-right: 10%;
+              }
+            }
+            .right-location {
+              display: inline-block;
+              text-align: right;
+            }
+          }
+        }
+      }
+    }
+  }
+</style>
+<style>
+  .ivu-table-wrapper {
+    width: 100%;
   }
 </style>
