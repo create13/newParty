@@ -6,38 +6,37 @@
         运派智慧物流操作管理系统
       </div>
       <Menu mode="horizontal" theme="dark">
-          <div class="layout-nav">
-            <menu-item v-for="(navs, nindex) in navList" :key="nindex" :name="navs.type">
-              <Icon :type="navs.type" color="#fff"></Icon>
-            </menu-item>
-            <div class="peoples" @click="moreClick">
-              <img src="@/assets/image/img-person.png" alt="" class="img-person">
-              <img src="@/assets/image/arrow-down.png" alt="" class="img-arrow">
-            </div>
+        <div class="layout-nav">
+          <menu-item v-for="(navs, nindex) in navList" :key="nindex" :name="navs.type">
+            <Icon :type="navs.type" color="#fff"></Icon>
+          </menu-item>
+          <div class="peoples" @click="moreClick">
+            <img src="@/assets/image/img-person.png" alt="" class="img-person">
+            <img src="@/assets/image/arrow-down.png" alt="" class="img-arrow">
           </div>
-        </Menu>
-      </Header>
-      <div class="pop-in" v-show="showIt">
-        aaaa
-      </div>
-      <Sider>
-        <Menu :active-name=activeNames @on-select="changesname" theme="dark" width="auto">
-          <MenuGroup>
+        </div>
+      </Menu>
+    </Header>
+    <div class="pop-in" v-show="showIt">
+      aaaa
+    </div>
+    <Sider>
+      <Menu :active-name=activeNames @on-select="changesname" theme="dark" width="auto">
+        <MenuGroup>
           <menu-item  v-for="(item, index) in menuList" :key="index" :name="item.name">
             <Icon :type="item.type"></Icon>
             {{item.labels}}
           </menu-item>
-          </MenuGroup>
-        </Menu>
-  </Sider>
-  <Content :style="styles">
-    <keep-alive>
-    <router-view></router-view>
-    </keep-alive>
-  </Content>
+        </MenuGroup>
+      </Menu>
+    </Sider>
+    <Content :style="styles">
+      <keep-alive>
+      <router-view></router-view>
+      </keep-alive>
+    </Content>
   </div>
 </template>
-
 <script>
 export default {
   name: 'headers',

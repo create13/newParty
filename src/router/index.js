@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import childs from './routers.js';
 const Header = () => import('@/components/header');
+const Login = () => import('@/views/login');
 Vue.use(Router);
 
 export default new Router({
@@ -9,13 +10,13 @@ export default new Router({
     {
       path: '',
       redirect: {
-        name: 'header'
+        name: 'main'
       }
     },
     {
       path: '/login',
       name: 'login',
-      component: () => import('@/views/login')
+      component: Login
     },
     {
       path: '/header',
@@ -26,7 +27,7 @@ export default new Router({
     // 404
     {
       path: '*',
-      component: Header
+      component: Login
     }
   ]
 });
