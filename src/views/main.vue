@@ -23,25 +23,29 @@
           </div>
         </div>
         <div class="tables all-style">
-
-          <Table height="300" stripe :columns="columns" :data="tableData"></Table>
+          <!-- <Row> -->
+            <!-- <i-Col span="24" style="border:1px solid yellow"> -->
+              <Table height="300" stripe :columns="columns" :data="tableData" class="tables-width"></Table>
+            <!-- </i-Col> -->
+          <!-- </Row> -->
         </div>
       </div>
       <div class="outer-footer">
-        <div class="footer-label">
+        <div class="footer-label" v-for="(colbg,cindex) in colors" :key="cindex"  :style="{backgroundColor: colbg.backColors}">
+          <div class="list-header"><span>仓库预警</span></div>
           <ul class="list-dots">
-            <li><span>仓库预警</span><span></span></li>
-            <li><span>仓库上线报警</span><span class="right-location">5</span></li>
-            <li><span>仓库下线报警</span><span class="right-location">10</span></li>
-            <li><span>进效期商品报警</span><span class="right-location">0</span></li>
-            <li><span>失效期商品报警</span><span class="right-location">0</span></li>
+            <li v-for="(list,lindex) in dataList" :key="lindex">
+              <span>{{list.dataLabel}}</span>
+              <span class="right-location">{{list.database}}</span>
+            </li>
           </ul>
         </div>
-        <div class="footer-label"></div>
-        <div class="footer-label"></div>
-        <div class="footer-label"></div>
 
       </div>
+
+    </div>
+    <div class="footer-wz">
+      登录日期：2018-06-06  期间：2017-2018  账套：测试账套  操作员：管理员  版本号：beta0.01
     </div>
   </div>
 </template>
@@ -66,12 +70,12 @@ export default {
         {label: '最近14天', value: '最近14天'}
       ],
       columns: [
-        {title: '行号', key: 'id'},
-        {title: '商品编号', key: 'code'},
-        {title: '商品全名', key: 'names'},
-        {title: '销售数量', key: 'amounts'},
-        {title: '销售金额', key: 'prizes'},
-        {title: '金额占比', key: 'keys'}
+        {title: '行号', key: 'id', minWidth: 40},
+        {title: '商品编号', key: 'code', minWidth: 40},
+        {title: '商品全名', key: 'names', minWidth: 40},
+        {title: '销售数量', key: 'amounts', minWidth: 40},
+        {title: '销售金额', key: 'prizes', minWidth: 40},
+        {title: '金额占比', key: 'keys', minWidth: 40}
       ],
       tableData: [
         {id: '01', code: 'sx1028', names: '物流产品', amounts: '200', prizes: '300', keys: '20%'},
@@ -83,6 +87,18 @@ export default {
         {id: '01', code: 'sx1028', names: '物流产品', amounts: '200', prizes: '300', keys: '20%'},
         {id: '01', code: 'sx1028', names: '物流产品', amounts: '200', prizes: '300', keys: '20%'},
         {id: '01', code: 'sx1028', names: '物流产品', amounts: '200', prizes: '300', keys: '20%'}
+      ],
+      dataList: [
+        {dataLabel: '仓库上线报警', database: 5},
+        {dataLabel: '仓库下线报警', database: 10},
+        {dataLabel: '进效期商品报警', database: 0},
+        {dataLabel: '仓库失效期商品报警预警', database: 0}
+      ],
+      colors: [
+        {backColors: '#7DC8F7'},
+        {backColors: '#40C3B0'},
+        {backColors: '#FE6A6C'},
+        {backColors: '#FFBA8B'}
       ]
     };
   },
@@ -191,7 +207,7 @@ export default {
 </script>
 <style lang="less" scoped>
   .out-main {
-    margin: 18px 20px;
+    margin: 18px 20px 0 20px;
     .outer-header {
       display: flex;
       flex-flow: row nowrap;
@@ -254,6 +270,7 @@ export default {
       display: flex;
       flex-flow: row nowrap;
       width: 100%;
+      min-width: 1300px;
       height: 300px;
       margin: 20px 0;
       border: 1px solid yellow;
@@ -279,18 +296,25 @@ export default {
       display: flex;
       flex-flow: row nowrap;
       width: 100%;
+      padding: 20px;
       height: 200px;
       min-width: 1300px;
       background: #fff;
       .footer-label {
         margin-left: 1%;
+
         flex: 1;
         border-radius: 4px;
         border: 1px solid yellow;
-        background-color: #7DC8F7;
         color: #fff;
         &:nth-child(1) {
           margin-left: 0;
+        }
+        .list-header {
+          font-size: 14px;
+          padding-left: 24px;
+          padding-top: 10px;
+          line-height: 36px;
         }
         .list-dots {
           list-style-type: none;
@@ -300,10 +324,6 @@ export default {
             line-height: 36px;
             display: flex;
             flex-flow: row nowrap;
-            &:nth-child(1) {
-              padding-left: 24px;
-              padding-top: 10px;
-            }
             span {
               flex:1;
               &:nth-last-child(1) {
@@ -319,9 +339,23 @@ export default {
       }
     }
   }
+  .footer-wz {
+    width: 100%;
+    height: 24px;
+    background-color: #fff;
+    line-height: 24px;
+    color: #1C1C1C;
+    padding-left: 20px;
+  }
 </style>
 <style>
   .ivu-table-wrapper {
     width: 100%;
+  }
+  .ivu-row {
+    width: 100%;
+  }
+  .tables-width {
+    width: 100%!important;
   }
 </style>
