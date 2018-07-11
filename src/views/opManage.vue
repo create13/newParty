@@ -1,7 +1,7 @@
 <template>
   <div class="second-page">
     <div class="colors-square">
-      <div class="colors-second" v-for="(sitem, sindex) in secondsData" :key="sindex" :style="{backgroundColor: sitem.colorsbg}">
+      <div class="colors-second" v-for="(sitem, sindex) in secondsData" :key="sindex" :style="{backgroundColor: sitem.colorsbg}" @click="routeGo(sitem)">
         <img :src="sitem.imagesIcon" alt="" class="img-size">
         <div class="fonts-desc">{{sitem.fontsDesc}}</div>
       </div>
@@ -11,24 +11,24 @@
 
 <script>
 export default {
-  name: 'myDesk',
+  name: 'opManage',
   data () {
     return {
       secondsData: [
-        {imagesIcon: require('../assets/image/second-villa.png'), fontsDesc: '物流公司管理', colorsbg: '#55ABFB'},
-        {imagesIcon: require('../assets/image/second-menu.png'), fontsDesc: '交易账户管理', colorsbg: '#40C3B0'},
-        {imagesIcon: require('../assets/image/second-package.png'), fontsDesc: '结算账户授信', colorsbg: '#F1D36A'},
-        {imagesIcon: require('../assets/image/second-search.png'), fontsDesc: '货款授信初审', colorsbg: '#FBBA8E'},
-        {imagesIcon: require('../assets/image/second-money.png'), fontsDesc: '充值管理', colorsbg: '#14D0BC'},
-        {imagesIcon: require('../assets/image/second-pay.png'), fontsDesc: '线下充值审核', colorsbg: '#41D386'},
-        {imagesIcon: require('../assets/image/second-file.png'), fontsDesc: '提现申请初审', colorsbg: '#39D8E6'},
-        {imagesIcon: require('../assets/image/second-deduct.png'), fontsDesc: '扣款申请', colorsbg: '#FB6C68'},
-        {imagesIcon: require('../assets/image/second-check.png'), fontsDesc: '扣款审核', colorsbg: '#FB6C68'},
-        {imagesIcon: require('../assets/image/second-location.png'), fontsDesc: '运营线路审核', colorsbg: '#2898C2'},
-        {imagesIcon: require('../assets/image/second-branch.png'), fontsDesc: '组织管理', colorsbg: '#398D94'},
-        {imagesIcon: require('../assets/image/second-home.png'), fontsDesc: '账号管理', colorsbg: '#18AE98'},
-        {imagesIcon: require('../assets/image/second-accredit.png'), fontsDesc: '专线授信审核', colorsbg: '#2898C2'},
-        {imagesIcon: require('../assets/image/second-cards.png'), fontsDesc: '提现申请复核', colorsbg: '#19A9B6'}
+        {imagesIcon: require('../assets/image/second-villa.png'), fontsDesc: '物流公司管理', colorsbg: '#55ABFB', path: ''},
+        {imagesIcon: require('../assets/image/second-menu.png'), fontsDesc: '交易账户管理', colorsbg: '#40C3B0', path: '/opConfig'},
+        {imagesIcon: require('../assets/image/second-package.png'), fontsDesc: '结算账户授信', colorsbg: '#F1D36A', path: ''},
+        {imagesIcon: require('../assets/image/second-search.png'), fontsDesc: '货款授信初审', colorsbg: '#FBBA8E', path: ''},
+        {imagesIcon: require('../assets/image/second-money.png'), fontsDesc: '充值管理', colorsbg: '#14D0BC', path: ''},
+        {imagesIcon: require('../assets/image/second-pay.png'), fontsDesc: '线下充值审核', colorsbg: '#41D386', path: ''},
+        {imagesIcon: require('../assets/image/second-file.png'), fontsDesc: '提现申请初审', colorsbg: '#39D8E6', path: ''},
+        {imagesIcon: require('../assets/image/second-deduct.png'), fontsDesc: '扣款申请', colorsbg: '#FB6C68', path: ''},
+        {imagesIcon: require('../assets/image/second-check.png'), fontsDesc: '扣款审核', colorsbg: '#FB6C68', path: ''},
+        {imagesIcon: require('../assets/image/second-location.png'), fontsDesc: '运营线路审核', colorsbg: '#2898C2', path: ''},
+        {imagesIcon: require('../assets/image/second-branch.png'), fontsDesc: '组织管理', colorsbg: '#398D94', path: ''},
+        {imagesIcon: require('../assets/image/second-home.png'), fontsDesc: '账号管理', colorsbg: '#18AE98', path: ''},
+        {imagesIcon: require('../assets/image/second-accredit.png'), fontsDesc: '专线授信审核', colorsbg: '#2898C2', path: ''},
+        {imagesIcon: require('../assets/image/second-cards.png'), fontsDesc: '提现申请复核', colorsbg: '#19A9B6', path: ''}
 
       ]
     };
@@ -40,7 +40,11 @@ export default {
 
   mounted () {},
 
-  methods: {}
+  methods: {
+    routeGo (url) {
+      this.$router.push(url.path);
+    }
+  }
 };
 
 </script>

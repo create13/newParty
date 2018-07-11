@@ -289,7 +289,7 @@ export default {
         padding-top: 15px;
       }
       #lineCharts {
-        height: 38vh;
+        height: 39vh;
       }
       .margins {
         width: 99%;
@@ -308,12 +308,12 @@ export default {
       flex-flow: row nowrap;
       width: 100%;
       padding: 20px;
-      height: 25vh;
+      height: calc(~"40vh - 144px");
       background: #fff;
       .footer-label {
         margin-left: 1%;
         flex: 1;
-        height: calc(100vh - 80px);
+        height: calc(~"40vh - 184px");
         border-radius: 4px;
         color: #fff;
         &:nth-child(1) {
@@ -323,14 +323,14 @@ export default {
           font-size: 14px;
           padding-left: 24px;
           margin-top: 10px;
-          line-height: 4vh;
+          line-height: 3.6vh;
         }
         .list-dots {
           list-style-type: none;
           li {
             font-size: 14px;
             padding-left: 10%;
-            line-height: 3.5vh;
+            line-height: 3.6vh;
             display: flex;
             flex-flow: row nowrap;
             span {
@@ -345,6 +345,36 @@ export default {
             .right-location {
               display: inline-block;
               text-align: right;
+            }
+          }
+        }
+      }
+    }
+  }
+  @media screen and (min-width: 1300px) and (max-width: 1399px){
+    .out-main {
+      .outer-middle {
+        height: 38vh;
+        #lineCharts {
+          height: 35vh;
+        }
+        .bg-white {
+          height: 38vh;
+        }
+      }
+      .outer-footer {
+        height: calc(~"46vh - 144px");
+        .footer-label {
+          height: calc(~"46vh - 184px");
+          .list-header {
+            line-height: 3vh;
+            font-size: 10px;
+            padding-left: 16px;
+          }
+          .list-dots {
+            li {
+              line-height: 3vh;
+              font-size: 10px;
             }
           }
         }
@@ -373,9 +403,17 @@ export default {
     width: 100%!important;
     height: 44vh;
   }
-  .ivu-table-body{
+  .ivu-table-body {
     height: 42vh;
     overflow-y: scroll;
+  }
+  @media screen and (min-width: 1300px) and (max-width: 1399px){
+    .tables-width {
+      height: 38vh;
+    }
+    .ivu-table-body {
+      height: 35vh;
+    }
   }
 
 </style>
