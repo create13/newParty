@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="outers">
     <Header class="height-set">
       <div class="left-icon">
         <img src="@/assets/image/left-logo.png" alt="" class="logo-pic">
@@ -36,7 +36,7 @@
       </keep-alive>
     </Content>
   </div>
-</template>
+</template>d
 <script>
 export default {
   name: 'headers',
@@ -49,11 +49,11 @@ export default {
         {name: 'warns', type: 'ios-bell-outline'},
         {name: 'doubt', type: 'ios-help-outline'}
       ],
-      activeNames: 'myDesk',
+      activeNames: 'main',
       menuList: [
-        {name: 'myDesk', type: 'ios-navigate', labels: '我的桌面'},
-        {name: 'op-manage', type: 'ios-keypad', labels: '运营管理'},
-        {name: 'op-configuration', type: 'ios-analytics', labels: '运营配置'}
+        {name: 'main', type: 'ios-navigate', labels: '我的桌面'},
+        {name: 'opManage', type: 'ios-keypad', labels: '运营管理'},
+        {name: 'opConfig', type: 'ios-analytics', labels: '运营配置'}
 
       ],
       styles: {
@@ -62,7 +62,8 @@ export default {
         top: '60px',
         bottom: '0',
         right: '0',
-        background: '#E8ECF0'
+        background: '#E8ECF0',
+        overFlow: 'hidden'
       }
     };
   },
@@ -86,7 +87,16 @@ export default {
 
 </script>
 <style lang='less' scoped>
-.height-set {
+  .outers {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+  }
+  .height-set {
+    width: 100%;
     height: 60px;
     .left-icon {
       position: absolute;
@@ -156,7 +166,9 @@ export default {
     height: 0;
   }
   .ivu-menu-vertical .ivu-menu-item, .ivu-menu-vertical .ivu-menu-submenu-title {
-    padding: 12px 24px;
-    /* #E8ECF0 */
+    padding: 12px 36px;
+  }
+  .ivu-menu-item>i {
+    margin-right: 21px;
   }
 </style>

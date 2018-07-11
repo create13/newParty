@@ -15,7 +15,6 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   width: 100%;
   height: 100%;
-  min-width: 1300px;
   overflow: hidden;
 }
 </style>

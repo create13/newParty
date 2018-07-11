@@ -9,26 +9,30 @@
           </div>
           <div class="font-des">
             <p>{{datum.condition}}<img :src=datum.srcPic class="arrows" alt=""></p>
-            <h1>1,{{datum.numbers}}</h1>
+            <h1>{{datum.numbers}}</h1>
           </div>
         </div>
       </div>
       <div class="outer-middle">
-        <div class="charts all-style">
-          <div id="lineCharts"></div>
-          <div class="selects">
-            <Select v-model="valueDay" size="small" style="width:100px">
-              <Option v-for="item in dayList" :value="item.value" :key="item.value">{{ item.label }}</Option>
-            </Select>
-          </div>
-        </div>
-        <div class="tables all-style">
-          <!-- <Row> -->
-            <!-- <i-Col span="24" style="border:1px solid yellow"> -->
-              <Table height="300" stripe :columns="columns" :data="tableData" class="tables-width"></Table>
-            <!-- </i-Col> -->
-          <!-- </Row> -->
-        </div>
+          <Row>
+            <i-Col span="12">
+              <div class="bg-white">
+                <div class="selects">
+                  <Select v-model="valueDay" size="small" style="width:80px">
+                    <Option v-for="item in dayList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                  </Select>
+                </div>
+                <div id="lineCharts"></div>
+              </div>
+            </i-Col>
+            <i-Col span="12">
+              <div class="margins">
+                <Table stripe :columns="columns" :data="tableData" class="tables-width"></Table>
+              </div>
+
+            </i-Col>
+          </Row>
+        <!-- </div> -->
       </div>
       <div class="outer-footer">
         <div class="footer-label" v-for="(colbg,cindex) in colors" :key="cindex"  :style="{backgroundColor: colbg.backColors}">
@@ -58,7 +62,7 @@ export default {
     return {
       squares: [
         {description: '毛利', prize: 75, condition: '销售情况', numbers: '1,8711', srcPic: require('../assets/image/arrow-green.jpg'), backgrounds: '#3AB18D'},
-        {description: '数量', prize: 352, condition: '采购概况', numbers: '3，8001', srcPic: require('../assets/image/arrow-red.jpg'), backgrounds: '#FB6C66'},
+        {description: '数量', prize: 352, condition: '采购概况', numbers: '3,8001', srcPic: require('../assets/image/arrow-red.jpg'), backgrounds: '#FB6C66'},
         {description: '总量', prize: 7045, condition: '库存概况', numbers: '1,9771', srcPic: require('../assets/image/arrow-blue.jpg'), backgrounds: '#429ED3'},
         {description: '现金', prize: 33452, condition: '现金银行', numbers: '9,8711', srcPic: '', backgrounds: '#E69A67'},
         {description: '应收', prize: 4545, condition: '应收应付', numbers: '9,8711', srcPic: '', backgrounds: '#2BCC71'}
@@ -78,6 +82,10 @@ export default {
         {title: '金额占比', key: 'keys', minWidth: 40}
       ],
       tableData: [
+        {id: '01', code: 'sx1028', names: '物流产品', amounts: '200', prizes: '300', keys: '20%'},
+        {id: '01', code: 'sx1028', names: '物流产品', amounts: '200', prizes: '300', keys: '20%'},
+        {id: '01', code: 'sx1028', names: '物流产品', amounts: '200', prizes: '300', keys: '20%'},
+        {id: '01', code: 'sx1028', names: '物流产品', amounts: '200', prizes: '300', keys: '20%'},
         {id: '01', code: 'sx1028', names: '物流产品', amounts: '200', prizes: '300', keys: '20%'},
         {id: '01', code: 'sx1028', names: '物流产品', amounts: '200', prizes: '300', keys: '20%'},
         {id: '01', code: 'sx1028', names: '物流产品', amounts: '200', prizes: '300', keys: '20%'},
@@ -142,7 +150,7 @@ export default {
           data: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10'],
           nameGap: 10,
           nameTextStyle: {
-            padding: [20, -10, -20, -30]
+            padding: [20, -10, -24, -24]
           },
           axisLine: {
             show: false
@@ -150,7 +158,7 @@ export default {
           axisTick: {
             show: false
           },
-          offset: 6
+          offset: 8
         },
         yAxis: {
           name: '销售金额',
@@ -201,21 +209,25 @@ export default {
         ]
       };
       Linecharts.setOption(option);
+      setTimeout(() => {
+        window.onresize = function () {
+          Linecharts.resize();
+        };
+      }, 100);
     }
   }
 };
 </script>
 <style lang="less" scoped>
   .out-main {
-    margin: 18px 20px 0 20px;
+    margin: 20px 20px 0 20px;
     .outer-header {
       display: flex;
       flex-flow: row nowrap;
       width: 100%;
-      height: 110px;
-      min-width: 1300px;
+      height: 16vh;
       .square-line {
-        height: 110px;
+        height: 16vh;
         margin-left: 1%;
         display: flex;
         flex-flow: row nowrap;
@@ -230,9 +242,9 @@ export default {
           justify-content: center;
           align-items: center;
           flex-flow: column;
-          width: 70px;
-          height: 70px;
-          margin: 20px 8% 20px 16%;
+          width: 8vh;
+          height: 8vh;
+          margin: 20px 8% 20px 15%;
           border-radius: 100%;
           color: #fff;
           p {
@@ -267,29 +279,28 @@ export default {
       }
     }
     .outer-middle {
-      display: flex;
-      flex-flow: row nowrap;
       width: 100%;
-      min-width: 1300px;
-      height: 300px;
+      height: 44vh;
       margin: 20px 0;
-      border: 1px solid yellow;
-      .all-style {
-        flex: 1;
-        display: flex;
-        background-color: #fff;
-        border: 1px solid blue;
-        #lineCharts {
-          flex: 1;
-        }
-        .selects {
-          position: absolute;
-          left: 41.7%;
-          margin-top: 10px;
-        }
+      .selects {
+        height: 3vh;
+        position: absolute;
+        right:4%;
+        padding-top: 15px;
       }
-      .tables {
-        margin-left: 20px;
+      #lineCharts {
+        height: 38vh;
+      }
+      .margins {
+        width: 99%;
+        margin-left: 1%;
+      }
+      .bg-white {
+        background-color: #fff;
+        width: 99%;
+        position: relative;
+        margin-right: 1%;
+        height: 44vh;
       }
     }
     .outer-footer {
@@ -297,15 +308,13 @@ export default {
       flex-flow: row nowrap;
       width: 100%;
       padding: 20px;
-      height: 200px;
-      min-width: 1300px;
+      height: 25vh;
       background: #fff;
       .footer-label {
         margin-left: 1%;
-
         flex: 1;
+        height: calc(100vh - 80px);
         border-radius: 4px;
-        border: 1px solid yellow;
         color: #fff;
         &:nth-child(1) {
           margin-left: 0;
@@ -313,21 +322,24 @@ export default {
         .list-header {
           font-size: 14px;
           padding-left: 24px;
-          padding-top: 10px;
-          line-height: 36px;
+          margin-top: 10px;
+          line-height: 4vh;
         }
         .list-dots {
           list-style-type: none;
           li {
             font-size: 14px;
             padding-left: 10%;
-            line-height: 36px;
+            line-height: 3.5vh;
             display: flex;
             flex-flow: row nowrap;
             span {
-              flex:1;
+              &:nth-child(1) {
+                flex-grow: 2;
+              }
               &:nth-last-child(1) {
                 margin-right: 10%;
+                flex-grow: 1;
               }
             }
             .right-location {
@@ -340,6 +352,8 @@ export default {
     }
   }
   .footer-wz {
+    position: fixed;
+    bottom:0;
     width: 100%;
     height: 24px;
     background-color: #fff;
@@ -348,7 +362,7 @@ export default {
     padding-left: 20px;
   }
 </style>
-<style>
+<style lang="less">
   .ivu-table-wrapper {
     width: 100%;
   }
@@ -357,5 +371,11 @@ export default {
   }
   .tables-width {
     width: 100%!important;
+    height: 44vh;
   }
+  .ivu-table-body{
+    height: 42vh;
+    overflow-y: scroll;
+  }
+
 </style>

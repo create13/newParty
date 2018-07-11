@@ -5,12 +5,12 @@ let childs = [
     component: () => import('@/views/main')
   },
   {
-    path: '/seconds',
-    component: () => import('@/views/seconds')
+    path: '/opManage',
+    component: () => import('@/views/opManage')
   },
   {
-    path: '/myDesk',
-    component: () => import('@/views/myDesk')
+    path: '/opConfig',
+    component: () => import('@/views/opConfig')
   }
 ];
 export default childs;
