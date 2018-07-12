@@ -10,23 +10,23 @@
       <div class="input-search">
         <Row :gutter="20">
           <i-col span="4">
-            <i-input v-model="value1" size="large" placeholder="large size">
+            <i-input v-model="value1" size="large">
               <span slot="prepend">账户名称</span>
             </i-input>
           </i-col>
           <i-col span="4">
-            <i-input v-model="value1" size="large" placeholder="large size">
-              <span slot="prepend">账户名称</span>
+            <i-input v-model="value1" size="large">
+              <span slot="prepend">组织代码</span>
             </i-input>
           </i-col>
           <i-col span="4">
-            <i-input v-model="value1" size="large" placeholder="large size">
-              <span slot="prepend">账户名称</span>
+            <i-input v-model="value1" size="large">
+              <span slot="prepend">所属枢纽</span>
             </i-input>
           </i-col>
           <i-col span="4">
-            <i-input v-model="value1" size="large" placeholder="large size">
-              <span slot="prepend">账户名称</span>
+            <i-input v-model="value1" size="large">
+              <span slot="prepend">账户状态</span>
             </i-input>
           </i-col>
           <i-col span="5">
@@ -68,6 +68,9 @@ export default {
       paramsTitle: '',
       value1: '',
       loadingSearch: false,
+      setInput: [
+        {types: 'input', spans: null, modelValue: 'valueAcount', lableNames: '账户名称'}
+      ],
       columnsTable: [
         {type: 'index', width: 60, align: 'center'},
         {
@@ -88,7 +91,8 @@ export default {
                 },
                 on: {
                   click: () => {
-                    this.show(params.index);
+                    // this.show(params.index);
+                    console.log(params);
                   }
                 }
               }, '冻结'),
