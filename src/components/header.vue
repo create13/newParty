@@ -79,7 +79,6 @@ export default {
       this.showIt = !this.showIt;
     },
     changesname (name) {
-      console.log(name);
       this.$router.push({path: `/${name}`});
     }
   }
@@ -94,53 +93,81 @@ export default {
     right: 0;
     bottom: 0;
     overflow: hidden;
-  }
-  .height-set {
-    width: 100%;
-    height: 60px;
-    .left-icon {
-      position: absolute;
-      z-index: 920;
-      width: 250px;
-      height: 40px;
-      line-height: 40px;
-      top: 10px;
-      left: 20px;
-      color: #fff;
-      font-size: 16px;
-      .logo-pic {
-        width: 40px;
+    .height-set {
+      width: 100%;
+      height: 60px;
+      .left-icon {
+        position: absolute;
+        z-index: 920;
+        width: 250px;
         height: 40px;
-        vertical-align: middle;
-        margin-right: 10px;
+        line-height: 40px;
+        top: 10px;
+        left: 20px;
+        color: #fff;
+        font-size: 16px;
+        .logo-pic {
+          width: 40px;
+          height: 40px;
+          vertical-align: middle;
+          margin-right: 10px;
+        }
+      }
+      .layout-nav {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        .ivu-menu-item {
+        font-size: 19px;
+        }
+        .peoples {
+          width: 36px;
+          height: 32px;
+          padding: 0 20px;
+          display: flex;
+          .img-person {
+            width: 24px;
+            height: 24px;
+            margin-top: 2px;
+          }
+          .img-arrow {
+            width: 12px;
+            height: 12px;
+            align-self: center;
+          }
+        }
+      }
+    }
+  @media screen and (min-width: 1099px) and (max-width: 1399px) {
+  .height-set {
+    height: 40px;
+    .left-icon {
+      height: 26px;
+      line-height: 26px;
+      top: 7px;
+      font-size: 14px;
+      .logo-pic {
+        width: 26px;
+        height: 26px;
+      }
+    }
+    .peoples {
+      width: 30px;
+      height: 28px;
+      .img-person {
+        width: 18px;
+        height: 18px;
       }
     }
     .layout-nav {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
       .ivu-menu-item {
-      font-size: 19px;
-      }
-      .peoples {
-        width: 36px;
-        height: 32px;
-        padding: 0 20px;
-        display: flex;
-        .img-person {
-          width: 24px;
-          height: 24px;
-          margin-top: 2px;
-        }
-        .img-arrow {
-          width: 12px;
-          height: 12px;
-          align-self: center;
-        }
+        font-size: 14px;
       }
     }
-}
-.pop-in {
+  }
+  }
+  }
+  .pop-in {
   position: absolute;
   right: 20px;
   top: 61px;
@@ -148,7 +175,7 @@ export default {
   height: 100px;
   border: 1px solid #eeeeee;
   background-color: burlywood;
-}
+  }
 </style>
 <style>
   .ivu-menu-vertical .ivu-menu-submenu-title-icon {
@@ -166,9 +193,24 @@ export default {
     height: 0;
   }
   .ivu-menu-vertical .ivu-menu-item, .ivu-menu-vertical .ivu-menu-submenu-title {
-    padding: 12px 36px;
+    padding: 10.5px 36px;
   }
   .ivu-menu-item>i {
     margin-right: 21px;
+  }
+  @media screen and (min-width: 1299px) and (max-width: 1399px) {
+    .ivu-menu-horizontal {
+      height: 40px;
+      line-height: 40px;
+    }
+    .ivu-layout-sider {
+      top: 40px;
+    }
+    .ivu-menu-vertical .ivu-menu-item, .ivu-menu-vertical .ivu-menu-submenu-title {
+      padding: 7px 36px;
+    }
+    .ivu-layout-content {
+      top: 40px!important;
+    }
   }
 </style>

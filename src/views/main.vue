@@ -36,7 +36,7 @@
       </div>
       <div class="outer-footer">
         <div class="footer-label" v-for="(colbg,cindex) in colors" :key="cindex"  :style="{backgroundColor: colbg.backColors}">
-          <div class="list-header"><span>仓库预警</span></div>
+          <div class="list-header"><span>仓库预警</span><img src="@/assets/image/circle-show.png" alt=""></div>
           <ul class="list-dots">
             <li v-for="(list,lindex) in dataList" :key="lindex">
               <span>{{list.dataLabel}}</span>
@@ -61,9 +61,9 @@ export default {
   data () {
     return {
       squares: [
-        {description: '毛利', prize: 75, condition: '销售情况', numbers: '1,8711', srcPic: require('../assets/image/arrow-green.jpg'), backgrounds: '#3AB18D'},
-        {description: '数量', prize: 352, condition: '采购概况', numbers: '3,8001', srcPic: require('../assets/image/arrow-red.jpg'), backgrounds: '#FB6C66'},
-        {description: '总量', prize: 7045, condition: '库存概况', numbers: '1,9771', srcPic: require('../assets/image/arrow-blue.jpg'), backgrounds: '#429ED3'},
+        {description: '毛利', prize: 75, condition: '销售情况', numbers: '1,8711', srcPic: require('../assets/image/arrow-green.png'), backgrounds: '#3AB18D'},
+        {description: '数量', prize: 352, condition: '采购概况', numbers: '3,8001', srcPic: require('../assets/image/arrow-red.png'), backgrounds: '#FB6C66'},
+        {description: '总量', prize: 7045, condition: '库存概况', numbers: '1,9771', srcPic: require('../assets/image/arrow-blue.png'), backgrounds: '#429ED3'},
         {description: '现金', prize: 33452, condition: '现金银行', numbers: '9,8711', srcPic: '', backgrounds: '#E69A67'},
         {description: '应收', prize: 4545, condition: '应收应付', numbers: '9,8711', srcPic: '', backgrounds: '#2BCC71'}
 
@@ -324,6 +324,20 @@ export default {
           padding-left: 24px;
           margin-top: 10px;
           line-height: 3.6vh;
+          display: flex;
+          align-items: center;
+          span {
+            display: inline-block;
+            width: 92%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
+          img {
+
+            width: 20px;
+            height: 20px;
+          }
         }
         .list-dots {
           list-style-type: none;
@@ -402,18 +416,19 @@ export default {
   .tables-width {
     width: 100%!important;
     height: 44vh;
-  }
-  .ivu-table-body {
+    .ivu-table-body {
     height: 42vh;
     overflow-y: scroll;
+  }
   }
   @media screen and (min-width: 1300px) and (max-width: 1399px){
     .tables-width {
       height: 38vh;
-    }
-    .ivu-table-body {
+      .ivu-table-body {
       height: 35vh;
     }
+    }
+
   }
 
 </style>

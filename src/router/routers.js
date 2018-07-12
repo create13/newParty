@@ -9,7 +9,8 @@ let childs = [
     component: () => import('@/views/opManage')
   },
   {
-    path: '/opConfig',
+    path: '/opConfig/:titles',
+    name: 'opConfig',
     component: () => import('@/views/opConfig')
   }
 ];

@@ -16,7 +16,7 @@ export default {
     return {
       secondsData: [
         {imagesIcon: require('../assets/image/second-villa.png'), fontsDesc: '物流公司管理', colorsbg: '#55ABFB', path: ''},
-        {imagesIcon: require('../assets/image/second-menu.png'), fontsDesc: '交易账户管理', colorsbg: '#40C3B0', path: '/opConfig'},
+        {imagesIcon: require('../assets/image/second-menu.png'), fontsDesc: '交易账户管理', colorsbg: '#40C3B0', path: 'opConfig'},
         {imagesIcon: require('../assets/image/second-package.png'), fontsDesc: '结算账户授信', colorsbg: '#F1D36A', path: ''},
         {imagesIcon: require('../assets/image/second-search.png'), fontsDesc: '货款授信初审', colorsbg: '#FBBA8E', path: ''},
         {imagesIcon: require('../assets/image/second-money.png'), fontsDesc: '充值管理', colorsbg: '#14D0BC', path: ''},
@@ -42,7 +42,7 @@ export default {
 
   methods: {
     routeGo (url) {
-      this.$router.push(url.path);
+      this.$router.push({name: url.path, params: { titles: encodeURI(url.fontsDesc) }});
     }
   }
 };
